@@ -5,7 +5,7 @@ date: "2025-06-15"
 categories: [stress, data visualization]
 ---
 
-Nationella folkhälsoenkäten är en urvalsundersökning som genomförs vartannat år i befolkning 16 år och äldre. Den redovisar resultat dels på nationell nivå, efter kön i kombination med ålder, ekonomi, födelseland, sysselsättning respektive utbildningsnivå, dels på regional nivå enbart efter kön. Denna post visar självrapporterad stress i sverige. Du kan läsa mer om datan [här](https://www.folkhalsomyndigheten.se/folkhalsorapportering-statistik/om-vara-datainsamlingar/nationella-folkhalsoenkaten/). Test.
+Nationella folkhälsoenkäten är en urvalsundersökning som genomförs vartannat år i befolkning 16 år och äldre. Den redovisar resultat dels på nationell nivå, efter kön i kombination med ålder, ekonomi, födelseland, sysselsättning respektive utbildningsnivå, dels på regional nivå enbart efter kön. Denna post visar självrapporterad stress i sverige. Du kan läsa mer om datan [här](https://www.folkhalsomyndigheten.se/folkhalsorapportering-statistik/om-vara-datainsamlingar/nationella-folkhalsoenkaten/).
 
 ```{r get data}
 #| message: false
@@ -109,7 +109,6 @@ df_wide2 <- df_wide2 %>%
 
 ```
 
-
 ```{r plot}
 #| warning: false
 
@@ -126,7 +125,4 @@ ggplot(df_wide2, aes(x = Region, y = Stressad)) +
   exit_shrink()
 ```
 
-
-
-
-
+This graph is probably not the best to visualize the data but this is a testing.
