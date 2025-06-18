@@ -4,16 +4,12 @@ image: profile.jpg
 about:
   template: jolla
   links:
-    - icon: twitter
-      text: Twitter
-      href: https://twitter.com
     - icon: linkedin
       text: LinkedIn
-      href: https://linkedin.com
+      href: https://www.linkedin.com/in/adam-meddeb-398a9a230/
     - icon: github
       text: Github
-      href: https://github.com
-
+      href: https://github.com/Niadme
 ---
 
-About this blog
+About this blog...
