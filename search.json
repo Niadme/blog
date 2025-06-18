@@ -14,24 +14,17 @@
     "text": "Nationella folkhälsoenkäten är en urvalsundersökning som genomförs vartannat år i befolkning 16 år och äldre. Den redovisar resultat dels på nationell nivå, efter kön i kombination med ålder, ekonomi, födelseland, sysselsättning respektive utbildningsnivå, dels på regional nivå enbart efter kön. Denna post visar självrapporterad stress i sverige. Du kan läsa mer om datan här.\n\nggplot(df_wide2, aes(x = Region, y = Stressad)) +\n  geom_point() +\n  theme(axis.text.x = element_text(angle = 45,\n                                   hjust = 1)) +\n  transition_states(År, \n                    transition_length = 1, \n                    state_length = 1) +\n  labs(title = 'Period: {closest_state}',\n     x = \"\",\n     y = \"Procentuell andel\") +\n  exit_shrink()\n\n\n\n\n\n\n\n\nThis graph is probably not the best to visualize the data but this is a testing."
   },
   {
-    "objectID": "posts/post-with-code/index.html",
-    "href": "posts/post-with-code/index.html",
-    "title": "Post With Code",
+    "objectID": "posts/pornuse/index.html",
+    "href": "posts/pornuse/index.html",
+    "title": "Visualizing pornuse",
     "section": "",
-    "text": "This is a post with executable code.\n\n1 + 1\n\n[1] 2"
-  },
-  {
-    "objectID": "posts/welcome/index.html",
-    "href": "posts/welcome/index.html",
-    "title": "Welcome To My Blog",
-    "section": "",
-    "text": "This is the first post in a Quarto blog. Welcome!\n\nSince this post doesn’t specify an explicit image, the first image in the post will be used in the listing page of posts."
+    "text": "Text to be added…\nYou can access the shiny app here"
   },
   {
     "objectID": "index.html",
     "href": "index.html",
     "title": "Testing",
     "section": "",
-    "text": "Visualizing stress in Sweden\n\n\n\n\n\n\nstress\n\n\ndata visualization\n\n\n\n\n\n\n\n\n\nJun 15, 2025\n\n\nAdam Meddeb\n\n\n\n\n\n\n\n\n\n\n\n\nPost With Code\n\n\n\n\n\n\nnews\n\n\ncode\n\n\nanalysis\n\n\n\n\n\n\n\n\n\nJun 14, 2025\n\n\nHarlow Malloc\n\n\n\n\n\n\n\n\n\n\n\n\nWelcome To My Blog\n\n\n\n\n\n\nnews\n\n\n\n\n\n\n\n\n\nJun 11, 2025\n\n\nTristan O’Malley\n\n\n\n\n\n\nNo matching items"
+    "text": "Visualizing pornuse world wide 2014-2024\n\n\n\n\n\n\nshiny\n\n\ndata visualization\n\n\n\n\n\n\n\n\n\nJun 15, 2025\n\n\nAdam Meddeb\n\n\n\n\n\n\n\n\n\n\n\n\nVisualizing stress in Sweden\n\n\n\n\n\n\nstress\n\n\ndata visualization\n\n\n\n\n\n\n\n\n\nJun 15, 2025\n\n\nAdam Meddeb\n\n\n\n\n\n\nNo matching items"
   }
 ]
