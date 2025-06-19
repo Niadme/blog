@@ -7,6 +7,20 @@
     "text": "About this blog…"
   },
   {
+    "objectID": "posts/reliability/reliability.html",
+    "href": "posts/reliability/reliability.html",
+    "title": "Reliabilitet",
+    "section": "",
+    "text": "Reliabilitet är ett central begrepp inom psykometrisk forskning och teori. I grunden handlar det om att särskilja det relevanta från det irrelevanta. Tankefiguren är sådan att ett frågeformuläres totala varians kan brytas ned i två delar; “error” och “true score”. Vi kommer att utforska närmare vad “error” och “true score” faktiskt betyder och hädanefter kommer begrepp som “sann” och “true score” att sättas inom citationstecken för att indikera att dessa begrepp är laddade med betydande teoretiska utgångspunkter och antaganden.\nFrågor kopplat till reliabilitet har debatterats och studerats inom psykologisk forskning under minst ett sekel. Charles Spearman publicerade 1904 en formel för hur man kan uppskatta den “sanna” korrelationen mellan två frågeformulär. Spearman förstod att frågeformulären inte bara fångade varians som var direkt kopplat till det man önskade studera utan även innehöll “error”. Korrelerar man två frågeformulär med error får man därför inget tillförlitligt estimat på den “sanna korrelationen”. Spearman föreslog därför en formel för att korrigera för sådana biased estimat:\n\\[\nr_{pq} = \\frac{r_{p'q'}}{\\sqrt{r_{p'p}\\,r_{q'q'}}}.\n\\] Here is an app where you can play around how estimates change with varying parameters."
+  },
+  {
+    "objectID": "posts/pornuse/index.html",
+    "href": "posts/pornuse/index.html",
+    "title": "Visualizing pornuse",
+    "section": "",
+    "text": "Pornography has been defined as any material in varying forms, including texts, video, photos, or audio that is consumed for sexual satisfaction and arousal of an individual or partnership. The effects of pornography on individuals or their intimate relationships have been a subject of research. Scholars note that much of the research on the effects of pornography often confuses correlation with causation.\nYou can access the shiny app here"
+  },
+  {
     "objectID": "posts/stress_in_sweden/index.html",
     "href": "posts/stress_in_sweden/index.html",
     "title": "Visualizing stress in Sweden",
@@ -14,17 +28,10 @@
     "text": "Nationella folkhälsoenkäten är en urvalsundersökning som genomförs vartannat år i befolkning 16 år och äldre. Den redovisar resultat dels på nationell nivå, efter kön i kombination med ålder, ekonomi, födelseland, sysselsättning respektive utbildningsnivå, dels på regional nivå enbart efter kön. Denna post visar självrapporterad stress i sverige. Du kan läsa mer om datan här.\n\nggplot(df_wide2, aes(x = Region, y = Stressad)) +\n  geom_point() +\n  theme(axis.text.x = element_text(angle = 45,\n                                   hjust = 1)) +\n  transition_states(År, \n                    transition_length = 1, \n                    state_length = 1) +\n  labs(title = 'Period: {closest_state}',\n     x = \"\",\n     y = \"Procentuell andel\") +\n  exit_shrink()\n\n\n\n\n\n\n\n\nThis graph is probably not the best to visualize the data but this is a testing."
   },
   {
-    "objectID": "posts/pornuse/index.html",
-    "href": "posts/pornuse/index.html",
-    "title": "Visualizing pornuse",
-    "section": "",
-    "text": "Text to be added…\nYou can access the shiny app here"
-  },
-  {
     "objectID": "index.html",
     "href": "index.html",
     "title": "A blog about psychometrics and related topics",
     "section": "",
-    "text": "Visualizing pornuse\n\n\n\n\n\n\nshiny\n\n\ndata visualization\n\n\n\n\n\n\n\n\n\nJun 15, 2025\n\n\nAdam Meddeb\n\n\n\n\n\n\n\n\n\n\n\n\nVisualizing stress in Sweden\n\n\n\n\n\n\nstress\n\n\ndata visualization\n\n\n\n\n\n\n\n\n\nJun 15, 2025\n\n\nAdam Meddeb\n\n\n\n\n\n\nNo matching items"
+    "text": "Reliabilitet\n\n\n\n\n\n\nreliabilitet\n\n\n\n\n\n\n\n\n\nJun 19, 2025\n\n\n\n\n\n\n\n\n\n\n\n\nVisualizing pornuse\n\n\n\n\n\n\nshiny\n\n\ndata visualization\n\n\n\n\n\n\n\n\n\nJun 15, 2025\n\n\nAdam Meddeb\n\n\n\n\n\n\n\n\n\n\n\n\nVisualizing stress in Sweden\n\n\n\n\n\n\nstress\n\n\ndata visualization\n\n\n\n\n\n\n\n\n\nJun 15, 2025\n\n\nAdam Meddeb\n\n\n\n\n\n\nNo matching items"
   }
 ]

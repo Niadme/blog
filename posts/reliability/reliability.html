@@ -6,10 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Adam Meddeb">
-<meta name="dcterms.date" content="2025-06-15">
+<meta name="dcterms.date" content="2025-06-19">
 
-<title>Visualizing pornuse – A blog about psychometrics and related topics</title>
+<title>Reliabilitet – A blog about psychometrics and related topics</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -69,6 +68,35 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="../../styles.css">
 </head>
@@ -110,10 +138,9 @@ ul.task-list li input[type="checkbox"] {
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
-      <h1 class="title">Visualizing pornuse</h1>
+      <h1 class="title">Reliabilitet</h1>
                                 <div class="quarto-categories">
-                <div class="quarto-category">shiny</div>
-                <div class="quarto-category">data visualization</div>
+                <div class="quarto-category">reliabilitet</div>
               </div>
                   </div>
   </div>
@@ -121,17 +148,11 @@ ul.task-list li input[type="checkbox"] {
   
   <div class="quarto-title-meta">
 
-      <div>
-      <div class="quarto-title-meta-heading">Author</div>
-      <div class="quarto-title-meta-contents">
-               <p>Adam Meddeb </p>
-            </div>
-    </div>
       
       <div>
       <div class="quarto-title-meta-heading">Published</div>
       <div class="quarto-title-meta-contents">
-        <p class="date">June 15, 2025</p>
+        <p class="date">June 19, 2025</p>
       </div>
     </div>
     
@@ -150,8 +171,11 @@ ul.task-list li input[type="checkbox"] {
 
 
 
-<p>Pornography has been defined as any material in varying forms, including texts, video, photos, or audio that is consumed for sexual satisfaction and arousal of an individual or partnership. The effects of pornography on individuals or their intimate relationships have been a subject of research. Scholars note that much of the research on the effects of pornography often confuses correlation with causation.</p>
-<p>You can access the shiny app <a href="https://niadme.shinyapps.io/pornuse/">here</a></p>
+<p>Reliabilitet är ett central begrepp inom psykometrisk forskning och teori. I grunden handlar det om att särskilja det relevanta från det irrelevanta. Tankefiguren är sådan att ett frågeformuläres totala varians kan brytas ned i två delar; “error” och “true score”. Vi kommer att utforska närmare vad “error” och “true score” faktiskt betyder och hädanefter kommer begrepp som “sann” och “true score” att sättas inom citationstecken för att indikera att dessa begrepp är laddade med betydande teoretiska utgångspunkter och antaganden.</p>
+<p>Frågor kopplat till reliabilitet har debatterats och studerats inom psykologisk forskning under minst ett sekel. Charles Spearman publicerade 1904 en formel för hur man kan uppskatta den “sanna” korrelationen mellan två frågeformulär. Spearman förstod att frågeformulären inte bara fångade varians som var direkt kopplat till det man önskade studera utan även innehöll “error”. Korrelerar man två frågeformulär med error får man därför inget tillförlitligt estimat på den “sanna korrelationen”. Spearman föreslog därför en formel för att korrigera för sådana biased estimat:</p>
+<p><span class="math display">\[
+r_{pq} = \frac{r_{p'q'}}{\sqrt{r_{p'p}\,r_{q'q'}}}.
+\]</span> Here is an <a href="https://niadme.shinyapps.io/reliability/">app</a> where you can play around how estimates change with varying parameters.</p>
 
 
 
