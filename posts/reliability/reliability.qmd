@@ -1,0 +1,15 @@
+---
+title: "Reliabilitet"
+format: html
+date: "2025-06-19"
+categories: [reliabilitet]
+---
+
+Reliabilitet är ett central begrepp inom psykometrisk forskning och teori. I grunden handlar det om att särskilja det relevanta från det irrelevanta. Tankefiguren är sådan att ett frågeformuläres totala varians kan brytas ned i två delar; "error" och "true score". Vi kommer att utforska närmare vad "error" och "true score" faktiskt betyder och hädanefter kommer begrepp som "sann" och "true score" att sättas inom citationstecken för att indikera att dessa begrepp är laddade med betydande teoretiska utgångspunkter och antaganden. 
+
+Frågor kopplat till reliabilitet har debatterats och studerats inom psykologisk forskning under minst ett sekel. Charles Spearman publicerade 1904 en formel för hur man kan uppskatta den "sanna" korrelationen mellan två frågeformulär. Spearman förstod att frågeformulären inte bara fångade varians som var direkt kopplat till det man önskade studera utan även innehöll "error". Korrelerar man två frågeformulär med error får man därför inget tillförlitligt estimat på den "sanna korrelationen". Spearman föreslog därför en formel för att korrigera för sådana biased estimat:
+
+$$
+r_{pq} = \frac{r_{p'q'}}{\sqrt{r_{p'p}\,r_{q'q'}}}.
+$$
+Here is an [app](https://niadme.shinyapps.io/reliability/) where you can play around how estimates change with varying parameters.

@@ -5,6 +5,6 @@ date: "2025-06-15"
 categories: [shiny, data visualization]
 ---
 
-Text to be added...
+Pornography has been defined as any material in varying forms, including texts, video, photos, or audio that is consumed for sexual satisfaction and arousal of an individual or partnership. The effects of pornography on individuals or their intimate relationships have been a subject of research. Scholars note that much of the research on the effects of pornography often confuses correlation with causation.
 
 You can access the shiny app [here](https://niadme.shinyapps.io/pornuse/)
