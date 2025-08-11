@@ -21,7 +21,27 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-</style>
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
@@ -40,6 +60,10 @@ ul.task-list li input[type="checkbox"] {
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/quarto-contrib/fontawesome6-1.2.0/all.min.css" rel="stylesheet">
+<link href="../../site_libs/quarto-contrib/fontawesome6-1.2.0/latex-fontsize.css" rel="stylesheet">
+<link href="../../site_libs/quarto-contrib/academicons-1.9.4/all.css" rel="stylesheet">
+<link href="../../site_libs/quarto-contrib/academicons-1.9.4/size.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -98,7 +122,6 @@ window.Quarto = {
 };
 </script>
 
-<link rel="stylesheet" href="../../styles.css">
 </head>
 
 <body class="nav-fixed fullcontent">
@@ -123,9 +146,18 @@ window.Quarto = {
 <span class="menu-text">About</span></a>
   </li>  
   <li class="nav-item compact">
+    <a class="nav-link" href="https://www.linkedin.com/in/adam-meddeb-398a9a230/"> <i class="bi bi-linkedin" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
     <a class="nav-link" href="https://github.com/niadme"> <i class="bi bi-github" role="img">
 </i> 
 <span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="https://orcid.org/0009-0005-4961-4972"> 
+<span class="menu-text"><i class="ai  ai-orcid ai-lg" aria-label="orcid"></i></span></a>
   </li>  
 </ul>
           </div> <!-- /navcollapse -->
@@ -171,15 +203,175 @@ window.Quarto = {
 
 
 
-<p>Reliabilitet är ett central begrepp inom psykometrisk forskning och teori. I grunden handlar det om att särskilja det relevanta från det irrelevanta. Tankefiguren är sådan att ett frågeformuläres totala varians kan brytas ned i två delar; “error” och “true score”. Vi kommer att utforska närmare vad “error” och “true score” faktiskt betyder och hädanefter kommer begrepp som “sann” och “true score” att sättas inom citationstecken för att indikera att dessa begrepp är laddade med betydande teoretiska utgångspunkter och antaganden.</p>
-<p>Frågor kopplat till reliabilitet har debatterats och studerats inom psykologisk forskning under minst ett sekel. Charles Spearman publicerade 1904 en formel för hur man kan uppskatta den “sanna” korrelationen mellan två frågeformulär. Spearman förstod att frågeformulären inte bara fångade varians som var direkt kopplat till det man önskade studera utan även innehöll “error”. Korrelerar man två frågeformulär med error får man därför inget tillförlitligt estimat på den “sanna korrelationen”. Spearman föreslog därför en formel för att korrigera för sådana biased estimat:</p>
-<p><span class="math display">\[
-r_{pq} = \frac{r_{p'q'}}{\sqrt{r_{p'p}\,r_{q'q'}}}.
-\]</span> Here is an <a href="https://niadme.shinyapps.io/reliability/">app</a> where you can play around how estimates change with varying parameters.</p>
+<section id="vad-är-reliabilitet" class="level2">
+<h2 class="anchored" data-anchor-id="vad-är-reliabilitet">Vad är reliabilitet?</h2>
+<p>Reliabilitet är ett centralt begrepp inom psykometrisk teori. I grunden handlar det om att särskilja det relevanta från det irrelevanta. Tankefiguren är sådan att ett frågeformuläres totala varians kan brytas ned i två delar; “error” och “true score” (dessa delar kan i sin tur brytas ned i ännu fler delar men låt oss vänta med det). Matematiskt brukar detta skrivas:</p>
+<p><span id="eq-1"><span class="math display">\[V_{\text{observed}} = \sigma_{\text{true score}}^2 + \sigma_{\text{error}}^2 \tag{1}\]</span></span></p>
+<p>I ekvation (1) är <span class="math inline">\(V_{\text{observed}}\)</span> den totala variansen, <span class="math inline">\(\sigma_{\text{true score}}^2\)</span> den sanna variansen och <span class="math inline">\(E\)</span> felmarginalen (error). Viktigt att förstå från denna formel är att både <span class="math inline">\(\sigma_{\text{true score}}^2\)</span> och <span class="math inline">\(\sigma_{\text{error}}^2\)</span> är latenta variabler. Med latent menar jag helt enkelt att de inte är direkt observerbara. Detta sätt att tänka runt reliabilitet går tillbaka till Charles Spearmans arbete under det tidiga 1900-talet [1904]. Spearman var en pionjär inom psykologisk metod och utöver att lägga grunderna för reliabilitetsteori är det han vi har att tacka för den ordinala korrelationskoefficienten samt faktoranalysen. Mycket av Spearmans arbete med reliabilitet gjordes med målet att kunna korrigera den observerade korrelationen mellan två frågeformulär eller test för deras brist på reliabilitet. På så vis var reliabilitet ett medel för ett mål; nämligen att hitta mer exakta empiriska estimat. Sedan Spearmans tidiga arbete med reliabilitet har forskning och teori därom utvecklats avsevärt. Läser man samtida artiklar på ämnet i ledande vetenskapliga tidsskrifter såsom <a href="https://link.springer.com/journal/11336">Psykometrika</a> är innehållet dessvärre ofta svårtillgängligt och tekniskt komplicerat. Resultatet är att framsteg och utveckling inom psykometrisk forskning sällan blir tillgängliga utanför den psykometriska fiskdammen. Detta tillkortakommande och dess potentiella orsaker har självkritiskt diskuterats i ledande psykometriska tidsskrifter [referenser]. En fara som jag ser med den uppdelning som idag finns mellan klinisk psykologi och psykometri är att psykometrikerna får tolkningsföreträde i frågor som upplevs vara mer psykometriskt orienterade. Risken finns att de som bedriver behandlingsstudier inte ser det som sin plikt att säkerställa goda psykometriska kvalitéer.</p>
+<p>Åter till reliabilitet. Det finns flera skäl till varför man ska bry sig om reliabilitet och min lista nedanför är på intet sätt uttömmande. Här är några viktiga skäl:</p>
+<ol type="1">
+<li>Det kanske mest uppenbara skälet är att reliabilitet hjälper oss förstå tillförlitligheten i våra instrument. Genom att sätta en siffra på tillförlitligheten kan vi sedan göra korrigeringar i våra analyser för att få fram mer rättvisa och stabila estimat.</li>
+<li>Tillförlitligheten i ett instrument har stor påverkan på din power. Ju mer irrelevant varians ditt instrument plockar upp desto mer deltagare behöver du för att hitta en effekt.</li>
+<li>Bidrgande till replikationskrisen inom psykologisk forskning är mätfel. Reliabilitet spelar här en viktig roll. Om två behandlingsstudier genomförs för behandling A där man i den ena använder ett mycket tillförlitligt instrument men i den andra använder ett ireliabelt instrument är det sannolikt att en av studierna kommer hitta en effekt men inte den andra. Detta (kan) bero på bristande reliabilitet och bidrar till inkonsekventa fynd inom fältet.</li>
+</ol>
+<p>Om du håller med om ett eller flera argument ovan så ska du fortsätta läsa. Jag kan omöjligen lova ett uttömande inlägg om reliabilitet men man behöver börja någonstans. Alla paragrafer nedan kan läsas för sig själva utan krav på att du ska ha läst det föregående. Jag har försökt strukturera texten så att du ska kunna välja den rubrik du tycker är intressant och bara läsa den. Själva inlägget är strukturerat på ett sådant sätt att jag börjar från början och arbetar mig framåt i tiden. Det känns mest naturligt tycker jag och kan ge en känsla för hur förståelsen för reliabilitet har förändrats över tid.</p>
+<section id="test-retest-reliabilitet" class="level3">
+<h3 class="anchored" data-anchor-id="test-retest-reliabilitet">Test-retest reliabilitet</h3>
+<p>Den kanske mest intuitiva uppskattningen av ett tests reliabilitet är det som kallas test-retest reliabilitet. Metoden går ut på att administrera ett och samma test vid tidpunkt t<sub>1</sub> och tidpunkt t<sub>2</sub> och använda korrelationen mellan dessa två tidpunkter som ett mått på dess reliabilitet. Men varför fungerar detta? Återvänd till ekvation (1). Eftersom vi antar att fel-termen <span class="math inline">\(E\)</span> har väntevärdet 0 och är oberoende vid olika mätttillfällen, är det bara den reliabla komponenten av testet som är gemensam mellan mätningarna. Den enda möjliga orsaken till att testet vid t<sub>1</sub> korrelerar med samma test vid t<sub>2</sub> är alltså att just den pålitliga delen av testet är densamma över tid.</p>
+<p>Det finns nyanser till detta. Den reliabla komponenten av testet kan vidare brytas ned i två delar; <em>reliabel state varians</em> och <em>reliabel trait varians</em>. Låt säga att vi administrerar ett test som ska mäta personlighet och en grupp personer får svara på frågan <em>“jag tycker om att gå på fest”</em>. Låt säga att denna fråga ska mäta hur extrovert du är som person. Enligt ekvation (1) består variansen för detta item av en reliabel komponent och en felterm. Den reliabla komponenten kan vi vidare förstå som en okänd blandning av det stabila personlighetsdraget extraversion och ett (eller flera) flyktigt tillstånd såsom glädje. För låt säga att du fick svara på frågan ovan när du faktiskt kände dig tillfreds och glad med livet, då lär det förmodligen ha påverkat hur du svarar på frågan. För att formalisera det hela kan vi skriva ut det som;</p>
+<p><span id="eq-2"><span class="math display">\[ V_{\text{observed}} = \sigma_{\text{trait}}^2 + \sigma_{\text{state}}^2 + \sigma_{\text{error}}^2  \tag{2}\]</span></span></p>
+<p>Genom test-retest reliabiliteten kan man inte skilja <span class="math inline">\(\sigma_{\text{state}}^2\)</span> från <span class="math inline">\(\sigma_{\text{trait}}^2\)</span>. Detta är dock möjligt vid upprepade mätningar vilket kräver andra analysmetoder än korrelationsanalyser. Om man genomför test-retest reliabilitet på ett konstrukt som flukturerar mycket över tid (t.ex. humör eller känslor) är det sannolikt att man uppskattar en låg reliabilitet för testet när det i själva verket är så att test-retest korrelationen säger mer om konstrukutets variabilitet över tid. En annan svårighet med test-retest reliabiliteten är att deltagarnas responser vid det andra mättillfället påverkas av det första mättillfället. Genom att ställa frågor vid t<sub>1</sub> kan deltagare ha tagit intryck av frågorna och börjar reflektera mer över fenomenet man önskar undersöka vilket i sin tur påverkar hur de svarar vid det andra mätttillfället. Det kan också vara fallet att deltagarna minns hur de svarade vid det första mättillfället. Av detta skäl är literaturen fylld av olika rekommendationer över vilka tidsinterval som är lämpliga för en test-retest reliabilitet och i grunden är ett sådant ställningstagande avhängigt hur du som mäter teoretiskt förstår det du önskar mäta.</p>
+</section>
+<section id="charles-spearman-och-split-half-metoden" class="level3">
+<h3 class="anchored" data-anchor-id="charles-spearman-och-split-half-metoden">Charles Spearman och split-half metoden</h3>
+<p>Även om test-retest reliabiliteten är intuitiv så är den kostsam. För att kunna beräkna den behöver man genomföra två administreringar av samma frågeformulär. Nog hade det varit bra att kunna uppskatta reliabiliteten men med bara ett administreringstillfälle. Två forskare löser detta problem ungefär samtidigt, oberoende av varandra och deras lösning är idag känd som Spearman-Brown reliabiliteten <span class="citation" data-cites="spearman_correlation_1910">(<a href="#ref-spearman_correlation_1910" role="doc-biblioref">Spearman 1910</a>)</span>. Deras enkla lösning gick ut på att dela ett frågeformulär i två lika stora halvor och korrelera dessa halvor med varandra. Om vi har ett frågeformulär med 10 frågor delas det in i två lika stora halvor; B och C med 5 frågor i vardera. Genom att korrelera dessa två frågeformulär med varandra kunde man få fram en korrelationskoefficient - en reliabilitetskoefficient!</p>
+<p><span id="eq-3"><span class="math display">\[ \rho_{SB} = \frac{2\rho_{ab}}{1+\rho_{ab}}  \tag{3}\]</span></span></p>
+<p>Även om ekvation (2) är tämligen enkel att förstå så infinner sig frågan hur man ska dela upp ett test i två halvor. Ska vi dela på mitten? Ska vi dela upp så att jämna items (item 2, item 4 o.s.v.) placeras i deltest A och udda items (item 1, item 3 o.s.v.) placeras i deltest B? Är vissa metoder att föredra framför andra? Svårigheten med split-half reliabiliteten är att beroende på hur du delar upp testet kommer du att få olika estimat. Hur man delar upp ett test i två halvor är det som i matematiken kallas för ett kobinatoriskt problem. Det finns nämligen ett sätt att räkna ut hur många olika kombinationer som är möjliga givet n.&nbsp;I tabelen nedan ser du hur många olika sätt det finns att dela upp ett test i två halvor utifrån antalet items. Jag har begränsat mig till <em>n</em> items mellan 10 och 24.</p>
+<div class="cell">
+<div class="cell-output-display">
+<table class="caption-top table table-sm table-striped small">
+<colgroup>
+<col style="width: 12%">
+<col style="width: 12%">
+<col style="width: 12%">
+<col style="width: 12%">
+<col style="width: 12%">
+<col style="width: 12%">
+<col style="width: 12%">
+<col style="width: 12%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: right;">10 items</th>
+<th style="text-align: right;">12 items</th>
+<th style="text-align: right;">14 items</th>
+<th style="text-align: right;">16 items</th>
+<th style="text-align: right;">18 items</th>
+<th style="text-align: right;">20 items</th>
+<th style="text-align: right;">22 items</th>
+<th style="text-align: right;">24 items</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">126</td>
+<td style="text-align: right;">462</td>
+<td style="text-align: right;">1716</td>
+<td style="text-align: right;">6435</td>
+<td style="text-align: right;">24310</td>
+<td style="text-align: right;">92378</td>
+<td style="text-align: right;">352716</td>
+<td style="text-align: right;">1352078</td>
+</tr>
+</tbody>
+</table>
+<p>Tabell över antalet möjliga uppdelningar av ett test utifrån antalet items.</p>
+</div>
+</div>
+<p>Utifrån att det finns så många olika sätt att dela upp ett test på så förstår man att beroende på vilken uppdelning du väljer kommer du också att få väldigt olika estimat på din splif-half reliabilitet. För att citera Lee Cronbach</p>
+<p>“If one split may give a higher coefficient than another, one can have little faith in whatever result is obtained from a single split.” <span class="citation" data-cites="cronbach_coefficient_1951">(<a href="#ref-cronbach_coefficient_1951" role="doc-biblioref">Cronbach 1951</a>)</span></p>
+<p>För att visuellt visa hur olika resultat du kan få så har jag gjort en graf över fördelningen över de olika split-half värden du får utifrån 15 000 olika uppdelningar av ett 25-item test (datan kan du läsa mer om <a href="https://www.personality-project.org/r/html/bfi.html">här</a>). Kom ihåg från tabellen ovan att det för 25 items finns mer än 1 300 000 olika sätt att dela upp testet på - för att avgränsa beräkningen har jag alltså bara valt 15 000 olika sätt.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="reliability_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="672"></p>
+<figcaption>Ovan ser du distributionen av split-half reliabiliteten för bfi datasetet i psych paketet. Det innehåller 25 personlighetsfrågor för 2800 deltagare. Den genomsnittliga split-half reliabiliteten är 0.82 med ett max på 0.89 och ett min på 0.60</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>Utöver svårigheten med hur ett test ska delas upp så utgår split-half metoden från att två deltest av ett test är parallella test. Det vill säga att de båda är lika förträffliga mått på den underliggande egenskapen du önskar mäta. Generellt kan man också säga att om split-half distributionen är stor, det vill säga att du får en stor spridning av dina estimat, så kan det vara ett tecken på att ditt test har fler än en dimension.</p>
+<p>Slutligen ska det tilläggas att split-half reliabiliteten inte är lämplig när frågorna i ett test har inneboende ordningsföljd. Ett test av matematisk förmåga där frågornas svårighetsgrad ökar eller ett test som mäter antal besvarade frågor inom en gieven tidsrymd bör inte undersökas med split-half reliabiliteten.</p>
+</section>
+</section>
+<section id="internal-consistency-cronback-alpha" class="level2">
+<h2 class="anchored" data-anchor-id="internal-consistency-cronback-alpha">Internal consistency (cronback alpha)</h2>
+<p>Split-half metoden försåg en med ett sätt att beräkna reliabiliteten utan att behöva administrera samma test vid fler än ett tillfälle. Det var ekonomiskt och relativt enkelt. Split-half reliabiliteten var en kompromiss mellan <em>“vi vill ha två likvärdiga test som vi kan korrelera mot varandra”</em> men <em>“vi vill inte administrera två test”</em>. Samtidigt insåg man att split-half metoden medförde en rad olika svårigheter i hur man skulle dela upp ett test. För att beräkna reliabiliteten vid ett testtillfälle och utan att behöva bekymra sig om hur man ska dela upp ett test i två identiska delar utvecklades en rad olika metoder för att beräkna det som idag kallas för ett tests interna konsistens (eng: internal consistency).</p>
+<p>Istället för att undersöka korrelationen mellan två testtillfällen eller mellan två olika halvor av ett och samma test kan den interna konsistensen beräknas genom att endast undersöka varje frågas specifika varians samt den totala variansen för ett test. Louis Guttman <span class="citation" data-cites="guttman_basis_1945">(<a href="#ref-guttman_basis_1945" role="doc-biblioref">Guttman 1945</a>)</span> föreslog sex olika lösningar på hur man kunde uppskatta ett tests interna konsistens. Lee Cronbach byggde vidare på Guttmans tredje lösning och anpassade den för frågor med en ordinal skala vilket har kommit att bli känt som Cronbachs alpha (förkortat <span class="math inline">\(\alpha\)</span>, <span class="citation" data-cites="cronbach_coefficient_1951">(<a href="#ref-cronbach_coefficient_1951" role="doc-biblioref">Cronbach 1951</a>)</span>). Rationalen för detta är i grunden inte särskilt olikt de tidigare metoderna och visar på hur en lösning till ett problem (i.e.&nbsp;hur ska vi uppskatta reliabilitet?) bygger på tidigare lösningar. Guttman, liksom Cronbach, antar att covariansen mellan frågor representerar reliabel varians. Att två frågor samvarierar beror ju på att de mäter samma underliggande konstrukt. Enskilda frågors varians däremot är en okänd blandning av reliabel varians och error. Genom att subtrahera enskild items varians från den totala variansen återstår alltså bara den “sanna” variansen och voila! Nu har vi ett mått på den reliabla variansen. Formeln för cronbach alpha är:</p>
+<p><span id="eq-4"><span class="math display">\[ \alpha = \frac{n}{n - 1} \left( \frac{V_t - \sum v_i}{V_t} \right)  \tag{4}\]</span></span></p>
+<p>I formeln ovan är <span class="math inline">\(V_1\)</span> testets totala varians och <span class="math inline">\(v_i\)</span> är enskilda frågors varians. Formeln ovan är ekvivalent med den nedan (vilket förekommer oftare i den veteskapliga literaturen på ämnet).</p>
+<p><span id="eq-5"><span class="math display">\[ \alpha = \frac{K}{K - 1} \left(1 - \frac{\sum_{i=1}^{K} \sigma^2_{Y_i}}{\sigma^2_X} \right)  \tag{5}\]</span></span></p>
+<p>Cronbach själv säger att <span class="math inline">\(\alpha\)</span> “is the average of all the possible split-half coefficients for a given test.” <span class="citation" data-cites="cronbach_coefficient_1951">(<a href="#ref-cronbach_coefficient_1951" role="doc-biblioref">Cronbach 1951</a>)</span>. Man kan också förstå <span class="math inline">\(\alpha\)</span> som ett mått på hur själv testet korrelerar med ett fiktivt identiskt test <span class="citation" data-cites="cronbach_coefficient_1951">(<a href="#ref-cronbach_coefficient_1951" role="doc-biblioref">Cronbach 1951</a>)</span>. Det är inte orimligt att anta att samvariationen mellan frågorna representerar reliabel varians men det blir orimligt att anta att alla frågor korrelerar lika bra med varandra. Vissa frågor i ett formulär kommer rimligen att korrelera mer med varandra än ett annat par frågor just därför att de bättre mäter det underliggande konstruktet. Ett annat antagande som går in i <span class="math inline">\(\alpha\)</span> är att konstruktet ifråga är endimensionellt. Det är viktigt att ha i åtanke att “Only if the underlying theory of the trait being measured calls for high item intercorrelations do the correlations support construct validity” <span class="citation" data-cites="cronbach_construct_1955">(<a href="#ref-cronbach_construct_1955" role="doc-biblioref">Cronbach and Meehl 1955</a>)</span>. Detta visar på vikten av att teoretiskt beakta huruvida <span class="math inline">\(\alpha\)</span> är ett rimligt mått på intern konsistens för ditt test eller inte. Det finns fler antaganden som går in i <span class="math inline">\(\alpha\)</span> men vi tar inte upp dem här (se exempelvis <span class="citation" data-cites="green_commentary_2009">Green and Yang (<a href="#ref-green_commentary_2009" role="doc-biblioref">2009</a>)</span> och <span class="citation" data-cites="mcneish_thanks_2018">McNeish (<a href="#ref-mcneish_thanks_2018" role="doc-biblioref">2018</a>)</span> för mer heltäckande beskrivningar av antaganden och tillkortakommanden med <span class="math inline">\(\alpha\)</span>).</p>
+</section>
+<section id="modelbaserade-mått-på-intern-konsistens" class="level2">
+<h2 class="anchored" data-anchor-id="modelbaserade-mått-på-intern-konsistens">Modelbaserade mått på intern konsistens</h2>
+<p>Modellbaserade mått på intern konsistens utgår från faktoranalytiska modeller. Dessa modeller undersöker kovarians-varians matrisen och försöker hitta lösningar för hur olika frågor grupperar sig i datan. Dessa modeller kallas också latent variabel analys och för att förstå dem ordentligt krävs kunskap i linjär algebra (låter värre än vad det är). Konceptuellt kan man säga att istället för att utgå från att alla frågor mäter ditt konstrukt lika väl så kan man få ut individuella uppskattningar för hur “viktiga” (den korrekta termen här är “viktad”) respektive fråga är i relation till det underliggande konstruktet. Med hjälp av sådana uppskattningar behöver man inte göra de antaganden som <span class="math inline">\(\alpha\)</span> gör om testet; nämligen att varje fråga är ett lika gott mått på det underliggande konstruktet. Med dessa modellbaserade metoder går det också att uppskatta den interna konsistensen för det övergripande konstruktet såväl för mer specifika subfaktorer (ofta ekvivalent med subskala).</p>
+</section>
+<section id="tillkortakommanden-filosofiska-och-logiska-problem." class="level2">
+<h2 class="anchored" data-anchor-id="tillkortakommanden-filosofiska-och-logiska-problem.">Tillkortakommanden, filosofiska och logiska problem.</h2>
+<section id="reliabilitet-varierar-mellan-grupper" class="level3">
+<h3 class="anchored" data-anchor-id="reliabilitet-varierar-mellan-grupper">Reliabilitet varierar mellan grupper</h3>
+<p>Reliabilitet är en funktion av testet, personerna som testet administreras till och omständigheter runt om som har bäring på testpoängen. I samtliga uppskattningar av reliabilitet sker någon form av analys av den varians man har i sin data. Variansen i ett givet dataset är alltid (mer eller mindre) unikt för det specifika urvalet man har till hands. Precis som med alla statistiska uppskattningar finns det därför en osäkerhet runt det reliabilitetsestimat du erhåller. Det är fullt möjligt att uppskatta en konfidensintervall för ens reliabilitetsestimat <span class="citation" data-cites="revelle_reliability_2019">(<a href="#ref-revelle_reliability_2019" role="doc-biblioref">Revelle and Condon 2019</a>)</span>. En viktig aspekt att ta med sig från detta är att reliabilietsestimat inte är egenskaper av ett test utan av ett testpoäng. Skillnaden kan verka petig men visar också samtidigt på en tydligare konceptuell förståelse av vad reliabilitet faktiskt är. Läser man den vetenskapliga literaturen är det legio att skriva något i stil med “Reliability for test [infoga valfritt test här] was found adequate at <span class="math inline">\(\alpha = 0.8\)</span>”. Huruvida testet är reliabelt för ditt specifika test är en empirisk fråga. Det är möjligt att tidigare studiers uppskattningar av reliabiliteten är överförbara till ditt specifika urval men det kan också vara fallet att ditt urval är annorlunda, att frågorna inte tillförlitligt mäter det du är intresserad av att studera.</p>
+</section>
+<section id="vad-är-bra-reliabilitet" class="level3">
+<h3 class="anchored" data-anchor-id="vad-är-bra-reliabilitet">Vad är bra reliabilitet?</h3>
+<p>Liksom många andra statistiska begrepp har reliabilitet definierats inom ett specifikt numreriskt intervall (0-1). Emedan en reliabilitet på 0 innebär total avsaknad av tillförlitlighet, liksom en reliabilitet på 1 innebär en perfekt tillförlitlighet hur ska vi först en reliabilitet på 0.5 eller 0.7? Vad är en bra reliabilitet? En rad olika konventioner har utarbetats för detta och ett av de vanligaste konventionerna är att ..</p>
+<p>Konventioner för vad som är god reliabilitet gör livet onekligen enklare för de som behöver rapportera reliabilitet men det sker på bekostnad av kritiskt tänkande. Vad som är bra eller dålig reliabilitet är beroende av vad för sorts beslut du ska fatta baserat på ditt instrument. Så här skriver Nunnally och Bernstein <span class="citation" data-cites="nunnally_bernstein_psychometric_1994">(<a href="#ref-nunnally_bernstein_psychometric_1994" role="doc-biblioref">Nunnally and Bernstein 1994, 249</a>)</span>;</p>
+<p>“Standards of acceptable reliability are presented. These depend upon what type of decision is to be made-tests used to contrast groups need not be as reliable as tests used to make decisions about individuals-but to a large extent, the issue is one of”How high is up?“”</p>
+<p>Det tycks mig som att detta sätt att resonera kring reliabilitet tycks ha gått förlorat. De skriver vidare:</p>
+<p>“If important decisions are made with respect to specific test scores, a reliability of .90 is the bare minimum, and a reliability of .95 should be considered the desirable standard” (p.&nbsp;265).</p>
+<p>Det går att att ifrågasätta de siffror som Bernstein och Nunnaly presenterar men deras sätt att resonera kring reliabilitet ter sig rimligt för mig. Vad som är bra nog är ett beslut som behöver ske i en kontext.</p>
+</section>
+<section id="reliabilitet-tenderar-att-öka-med-frågeformulärets-längd" class="level3">
+<h3 class="anchored" data-anchor-id="reliabilitet-tenderar-att-öka-med-frågeformulärets-längd">Reliabilitet tenderar att öka med frågeformulärets längd</h3>
+<p>Ett tämligen enkelt sätt att öka reliabiliteten för ett test är genom att öka mängden frågor. Reliabiliteten ökar nämligen som en funktion av antalet frågor i testet. Man brukar säga att reliabiliteten går mot 1 asympototiskt. Detta innebär att när n går mot oändligheten går reliabiliteten mot 1. I grafen nedan ser du hur reliabiliteten ökar med antalet frågor för tre olika test med en genomsnittlig inter-item korrelation på 0.1, 0.3 och 0.5. Vad som är tydligt från grafen är att oberoende hur mycket frågorna samvarierar med varandra genomsnittligt så ökar reliabiliteten för samtliga test. Vad inter-item korrelationen påverkar är mängden frågor du behöver i ditt test för att reliabiliteten ska nå vissa kritiska värden för reliabilitet. Har du ett test med en genomsnittlig inter-item korrelation på 0.5 behöver du bara 3 frågor för att nå 0.7 i <span class="math inline">\(\alpha\)</span> men för ett test med 0.1 i inter-item korrelaiton behöver du 21 frågor för att uppnå samma nivå av reliabilitet.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="reliability_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="reliabilitet-blir-meningsfullt-genom-teori." class="level3">
+<h3 class="anchored" data-anchor-id="reliabilitet-blir-meningsfullt-genom-teori.">Reliabilitet blir meningsfullt genom teori.</h3>
+<p>Ett reliabilitetsestimat är aldrig ett självändamål – det får mening först när det sätts i relation till en teoretisk förståelse av det som mäts. Antag att vi beräknar Cronbach’s α för ett frågeformulär. Om formuläret är endimensionellt och alla frågor är avsedda att mäta samma konstruktion, då är α ett rimligt mått på intern konsistens. Om konstruktet däremot består av flera distinkta men relaterade dimensioner (t.ex. olika aspekter av emotionell reglering) kommer α att underskatta den sanna reliabiliteten, eftersom korrelationerna mellan frågor från olika dimensioner naturligt blir lägre. Det är därför avgörande att först fråga sig: vad säger teorin om mitt konstrukt?</p>
+<ul>
+<li>Är det en enda dimension eller flera?</li>
+<li>Är det stabilt över tid, eller förändras det snabbt?</li>
+<li>Förväntar vi oss att alla frågor ska hänga starkt ihop, eller är vissa frågor avsiktligt mer perifera?</li>
+</ul>
+<p>En hög intern konsistens kan i vissa fall vara ett varningstecken. Om alla frågor är nästan identiska riskerar vi att mäta en snäv aspekt av konstruktet och förlora innehållsvaliditet. Som Cronbach och Meehl uttryckte det: “High internal consistency may lower validity. Only if the underlying theory of the trait being measured calls for high item intercorrelations do the correlations support construct validity.” <span class="citation" data-cites="cronbach_construct_1955">(<a href="#ref-cronbach_construct_1955" role="doc-biblioref">Cronbach and Meehl 1955</a>)</span></p>
+<p>En annan underliggande premiss i många reliabilitetsmått – särskilt α – är att det vi mäter är ett “common cause”-fenomen: en latent variabel som orsakar variationen i samtliga frågor. Om konstruktet i stället är ett nätverk av ömsesidigt påverkande variabler (t.ex. många psykologiska syndrom), är detta antagande tveksamt och andra modeller (t.ex. nätverksanalys eller generella faktorstrukturer) kan vara mer meningsfulla. Kort sagt: reliabilitet är inte bara en siffra mellan 0 och 1, utan en tolkning som måste bottna i en välgrundad modell av det fenomen vi vill mäta. Utan en sådan teoretisk förankring riskerar reliabilitetsmåttet att vara antingen missvisande – eller rentav meningslöst.</p>
+</section>
+<section id="vad-detta-inlägg-inte-har-tagit-upp" class="level3">
+<h3 class="anchored" data-anchor-id="vad-detta-inlägg-inte-har-tagit-upp">Vad detta inlägg inte har tagit upp</h3>
+<p>Detta inlägg har bara berört en bråkdel av de metoder och perspektiv som finns för att uppskatta reliabilitet. Vi har exempelvis inte gått in på interbedömarreliabilitet (t.ex. Cohens kappa), test–retestvarianter som intraklasskorrelation (ICC), eller mer avancerade ramverk som Generalizability Theory och General Latent Variable Modeling. Inte heller har vi diskuterat reliabilitet för dikotoma eller kategoriska data, eller hur reliabilitet kan uppskattas i adaptiva test och moderna IRT-modeller. Dessa metoder erbjuder ofta mer flexibla och situationsanpassade sätt att bedöma mätprecision, men kräver samtidigt mer komplexa analysverktyg och antaganden. Syftet här har varit att ge en teoretisk och historisk grund, med fokus på de klassiska reliabilitetsmåtten och deras logik, så att läsaren kan tolka och använda dem medvetet – och veta när de bör kompletteras med andra metoder.</p>
 
 
 
-</main> <!-- /main -->
+</section>
+</section>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="ref-cronbach_coefficient_1951" class="csl-entry" role="listitem">
+Cronbach, Lee J. 1951. <span>“Coefficient Alpha and the Internal Structure of Tests.”</span> <em>Psychometrika</em> 16 (3): 297–334. <a href="https://doi.org/10.1007/BF02310555">https://doi.org/10.1007/BF02310555</a>.
+</div>
+<div id="ref-cronbach_construct_1955" class="csl-entry" role="listitem">
+Cronbach, Lee J., and Paul E. Meehl. 1955. <span>“Construct Validity in Psychological Tests.”</span> <em>Psychological Bulletin</em> 52 (4): 281–302. <a href="https://doi.org/10.1037/h0040957">https://doi.org/10.1037/h0040957</a>.
+</div>
+<div id="ref-green_commentary_2009" class="csl-entry" role="listitem">
+Green, Samuel B., and Yanyun Yang. 2009. <span>“Commentary on <span>Coefficient</span> <span>Alpha</span>: <span>A</span> <span>Cautionary</span> <span>Tale</span>.”</span> <em>Psychometrika</em> 74 (1): 121–35. <a href="https://doi.org/10.1007/s11336-008-9098-4">https://doi.org/10.1007/s11336-008-9098-4</a>.
+</div>
+<div id="ref-guttman_basis_1945" class="csl-entry" role="listitem">
+Guttman, Louis. 1945. <span>“A Basis for Analyzing Test-Retest Reliability.”</span> <em>Psychometrika</em> 10 (4): 255–82. <a href="https://doi.org/10.1007/BF02288892">https://doi.org/10.1007/BF02288892</a>.
+</div>
+<div id="ref-mcneish_thanks_2018" class="csl-entry" role="listitem">
+McNeish, Daniel. 2018. <span>“Thanks Coefficient Alpha, We’ll Take It from Here.”</span> <em>Psychological Methods</em> 23 (3): 412–33. <a href="https://doi.org/10.1037/met0000144">https://doi.org/10.1037/met0000144</a>.
+</div>
+<div id="ref-nunnally_bernstein_psychometric_1994" class="csl-entry" role="listitem">
+Nunnally, Jum C., and Ira H. Bernstein. 1994. <em>Psychometric Theory</em>. 3rd ed. New York: McGraw-Hill.
+</div>
+<div id="ref-revelle_reliability_2019" class="csl-entry" role="listitem">
+Revelle, William, and David M. Condon. 2019. <span>“Reliability from α to ω: <span>A</span> Tutorial.”</span> <em>Psychological Assessment</em> 31 (12): 1395–1411. <a href="https://doi.org/10.1037/pas0000754">https://doi.org/10.1037/pas0000754</a>.
+</div>
+<div id="ref-spearman_correlation_1910" class="csl-entry" role="listitem">
+Spearman, C. 1910. <span>“<span>CORRELATION</span> <span>CALCULATED</span> <span>FROM</span> <span>FAULTY</span> <span>DATA</span>.”</span> <em>British Journal of Psychology, 1904-1920</em> 3 (3): 271–95. <a href="https://doi.org/10.1111/j.2044-8295.1910.tb00206.x">https://doi.org/10.1111/j.2044-8295.1910.tb00206.x</a>.
+</div>
+</div></section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
@@ -601,6 +793,35 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 });
 </script>
 </div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p><span class="faux-block"><i class="fa-brands fa-creative-commons" aria-label="creative-commons"></i> 2023 Adam Meddeb</span></p>
+</div>   
+    <div class="nav-footer-center">
+      <ul class="footer-items list-unstyled">
+    <li class="nav-item compact">
+      <i class="bi bi-github" role="img">
+</i> 
+  </li>  
+    <li class="nav-item">
+    <a class="nav-link" href="https://github.com/Niadme/blog">
+<p>Source code</p>
+</a>
+  </li>  
+</ul>
+    </div>
+    <div class="nav-footer-right">
+      <ul class="footer-items list-unstyled">
+    <li class="nav-item">
+    <a class="nav-link" href="https://quarto.org/">
+<p>Built with Quarto</p>
+</a>
+  </li>  
+</ul>
+    </div>
+  </div>
+</footer>
 
 
 
